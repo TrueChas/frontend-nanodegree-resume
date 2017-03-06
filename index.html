@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
 		<title>Resume</title>
 		<link href="css/style.css" rel="stylesheet">
 		<script src="js/jQuery.js"></script>
 		<script src="js/helper.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 	</head>
 	<body>
@@ -23,9 +23,9 @@
 			<div id="education" class="gray">
 				<h2>Education</h2>
 			</div>
-			<div id="mapDiv">
+			<!-- <div id="mapDiv">
 				<h2>Where I've Lived and Worked</h2>
-			</div>
+			</div> -->
 			<div id="lets-connect" class="dark-gray">
 				<h2 class="orange center-text">Let's Connect</h2>
 				<ul id="footerContacts" class="flex-box"></ul>
@@ -33,57 +33,27 @@
 		</div>
 		<script src="js/resumeBuilder.js"></script>
 		<script>
-			function displayWork() {
-				for (var job = 0; job < work.jobs.length; job++) {
-					$("#workExperience").append(HTMLworkStart);
-					var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-					var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-					var formattedEmployerTitle = formattedEmployer + formattedTitle;
-					$(".work-entry:last").append(formattedEmployerTitle);
-					var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates)
-					$(".work-entry:last").append(formattedDates);
-					var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-					$(".work-entry:last").append(formattedDescription);
-				}
-			}
-			displayWork();
-			if(bio.skills.length > 0) {
-				$("#header").append(HTMLskillsStart);
-				var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-				$("#skills").append(formattedSkill);
-				formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-				$("#skills").append(formattedSkill);
-				formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-				$("#skills").append(formattedSkill);
-				formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-				$("#skills").append(formattedSkill);
-			}
 			if(document.getElementsByClassName('flex-item').length === 0) {
-				document.getElementById('topContacts').style.backgroundColor = 'black';
+				document.getElementById('topContacts').style.display = 'none';
 			}
 			if(document.getElementsByTagName('h1').length === 0) {
-				document.getElementById('header').style.backgroundColor = 'black';
+				document.getElementById('header').style.display = 'none';
 			}
 			if(document.getElementsByClassName('work-entry').length === 0) {
-				document.getElementById('workExperience').style.backgroundColor = 'black';
+				document.getElementById('workExperience').style.display = 'none';
 			}
 			if(document.getElementsByClassName('project-entry').length === 0) {
-				document.getElementById('projects').style.backgroundColor = 'black';
+				document.getElementById('projects').style.display = 'none';
 			}
 			if(document.getElementsByClassName('education-entry').length === 0) {
-				document.getElementById('education').style.backgroundColor = 'black';
+				document.getElementById('education').style.display = 'none';
 			}
 			if(document.getElementsByClassName('flex-item').length === 0) {
-				document.getElementById('lets-connect').style.backgroundColor = 'black';
+				document.getElementById('lets-connect').style.display = 'none';
 			}
-			if(document.getElementById('map') === null) {
-				document.getElementById('mapDiv').style.backgroundColor = 'black';
-			}
-			// $(document).click(function(loc) {
-			// 	var x = loc.pageX;
-			// 	var y = loc.pageY;
-			// 	logClicks(x,y);
-			// });
+			// if(document.getElementById('map') === null) {
+			// 	document.getElementById('mapDiv').style.display = 'none';
+			// }
 		</script>
 	</body>
 </html>
